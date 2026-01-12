@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useReducer } from "react";
 
 
@@ -28,6 +28,7 @@ export const Store = createContext(null);
                 City:action.payload.City,
                 State:action.payload.State,
                 Zip:action.payload.Zip,
+                
 
               }
         )
@@ -37,12 +38,25 @@ export const Store = createContext(null);
     }
 }
 
+const initialState = JSON.parse(
+  sessionStorage.getItem("FormData")
+) || [];
 
 
 export  const StoreProvider =({children})=>{
 
 
-  const [FormData, dispatchFormData] = useReducer(FormReducer,[]);
+  const [FormData, dispatchFormData] = useReducer(FormReducer, initialState);
+
+  
+  useEffect(() => {
+
+    sessionStorage.setItem('FormData', JSON.stringify(FormData));
+
+  }, [FormData]);
+
+
+
 
 
 
