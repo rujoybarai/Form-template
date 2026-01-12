@@ -11,7 +11,7 @@ function App() {
   return (
      <StoreProvider>
      <Headers  showForm={showForm} setShowForm={setShowForm}  />
-     {(showForm === 'Form')?(<Form />):(<Profile />)}
+     {(showForm === 'Profile')?(<Profile />):(<Form />)}
   
       </StoreProvider>
   )
