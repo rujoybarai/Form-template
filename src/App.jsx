@@ -5,14 +5,15 @@ import Form from './components/Form'
 import { StoreProvider } from './Store/Store'
 import { useState } from 'react'
 import Profile from './components/Profile'
+import { Outlet } from 'react-router-dom'
 function App() {
 
-  const [showForm, setShowForm] = useState();
+  // const [showForm, setShowForm] = useState();
   return (
      <StoreProvider>
-     <Headers  showForm={showForm} setShowForm={setShowForm}  />
-     {(showForm === 'Profile')?(<Profile />):(<Form />)}
-  
+     <Headers   />
+     {/* {(showForm === 'Profile')?(<Profile />):(<Form />)} */}
+      <Outlet/>
       </StoreProvider>
   )
 }
