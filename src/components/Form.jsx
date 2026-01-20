@@ -2,9 +2,11 @@
 import { useRef } from 'react'
 import { Store } from '../Store/Store'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Form() {
     const {AddDetails}=useContext(Store);
+    const navigate =useNavigate();
 
    const NameRef=useRef();
    const UserNameRef=useRef();
@@ -32,6 +34,7 @@ export default function Form() {
       if(Name && UserName && Email && Password && Address1 && City && State && Zip && Checked){
           AddDetails(Name,UserName,Email,Password,Address1,Address2,City,State,Zip);
             alert('Form submitted successfully!');
+            navigate ("/profile")
         }else{
             alert('Please fill in all required fields.');
         }
